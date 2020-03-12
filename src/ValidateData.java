@@ -1,19 +1,23 @@
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 /**
  * Servlet implementation class ValidateData
  */
 @WebServlet("/ValidateData")
 public class ValidateData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static final String Regex="^(.+)@(.+)$";
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -27,7 +31,27 @@ public class ValidateData extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//String name = request.getParameter("fullName");
+		//String matric = request.getParameter("MatricNo");
+		//String currentAddr = request.getParameter("CurrentAddr");
+		//String homeAddr =request.getParameter("HomeAddr");
+		String email = request.getParameter("Email");
+		//String mobileno = request.getParameter("MobileNo");
+		//String homeNo = request.getParameter("HomeNo");
+		
+	   Pattern pattern = Pattern.compile(Regex);
+	   Matcher matcher = pattern.matcher("email");
+	   
+	   if(matcher.matches()) {
+		   RequestDispatcher req = request.getRequestDispatcher("fail.jsp");
+		   req.include(request, response);
+	   }
+	   
+	   else {
+		   RequestDispatcher req = request.getRequestDispatcher("welcome.jsp");
+		   req.include(request, response);
+	   }
+		
 	}
 
 	/**
@@ -38,4 +62,5 @@ public class ValidateData extends HttpServlet {
 		doGet(request, response);
 	}
 
+	
 }
