@@ -62,7 +62,6 @@ content: "";
 		    }
 		    
 		    if (!matfilter.test(matric.value)){
-		    	matric.p
 		    	return false;
 		    }
 		
