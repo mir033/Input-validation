@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 public class ValidateData extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private static final String Regex="^(.+)@(.+)$";
+    private static final String MatricRegex="^/[0-9]{7}";
     /**
      * @see HttpServlet#HttpServlet()
      */
