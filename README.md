@@ -11,4 +11,4 @@ Input-validation Using JSP and javascript
 Apache tomcat, html, css, javascript
 
 ## Screenshot
-![image](github.com/mir033/Input-validation/tree/master/screenshoot/form.png)
+![image](screenshoot/form.png)
