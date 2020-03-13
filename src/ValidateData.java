@@ -32,24 +32,35 @@ public class ValidateData extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//String name = request.getParameter("fullName");
-		//String matric = request.getParameter("MatricNo");
-		//String currentAddr = request.getParameter("CurrentAddr");
-		//String homeAddr =request.getParameter("HomeAddr");
+		String name = request.getParameter("fullName");
+		String matric = request.getParameter("MatricNo");
+		String currentAddr = request.getParameter("CurrentAddr");
+		String homeAddr =request.getParameter("HomeAddr");
 		String email = request.getParameter("Email");
-		//String mobileno = request.getParameter("MobileNo");
-		//String homeNo = request.getParameter("HomeNo");
+		String mobileno = request.getParameter("MobileNo");
+		String homeNo = request.getParameter("HomeNo");
 		
 	   Pattern pattern = Pattern.compile(Regex);
-	   Matcher matcher = pattern.matcher("email");
+	   Matcher matcher = pattern.matcher(email);
 	   
 	   if(matcher.matches()) {
-		   RequestDispatcher req = request.getRequestDispatcher("fail.jsp");
-		   req.include(request, response);
+		   response.setContentType("text/html");
+		   PrintWriter out = response.getWriter();
+		   out.println("<html>");
+		   out.println("<body>");
+		   out.print("<h4>Name : " + name + "</h4>");
+		   out.print("<h4>Matric No : " + matric + "</h4>");
+		   out.print("<h4>Current Address : " + currentAddr + "</h4>");
+		   out.print("<h4>Home Address : " + homeAddr+ "</h4>");
+		   out.print("<h4>Email : " + email + "</h4>");
+		   out.print("<h4>Mobile No: " + mobileno+ "</h4>");
+		   out.print("<h4>Home No : " + homeNo+ "</h4>");
+		   out.println("</body></html>");
 	   }
 	   
 	   else {
-		   RequestDispatcher req = request.getRequestDispatcher("welcome.jsp");
+		   
+		   RequestDispatcher req = request.getRequestDispatcher("fail.jsp");
 		   req.include(request, response);
 	   }
 		
